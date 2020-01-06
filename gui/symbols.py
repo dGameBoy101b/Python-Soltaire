@@ -162,7 +162,7 @@ def draw_spade(rad: float, x: float = 0, y: float = 0) -> Turtle:
     t.end_fill()
     return t
 
-def draw_text(text: str, color: str, rad: float, x: float = 0, y: float = 0) -> Turtle:
+def draw_text(text: str, color: str, rad: float, x: float = 0, y: float = 0, align: str = 'center') -> Turtle:
     if not isinstance(text, str):
         raise TypeError('\'text\' must be a string, not a '+str(type(text)))
     if isinstance(rad, int):
@@ -177,15 +177,24 @@ def draw_text(text: str, color: str, rad: float, x: float = 0, y: float = 0) -> 
         y = float(y)
     if not isinstance(y, float):
         raise TypeError('\'y\' must be a float, not a '+str(type(y)))
+    if not isinstance(align, str):
+        raise TypeError('\'align\' must be a string, not a '+str(type(align)))
     if len(text) < 1:
         raise ValueError('\'text\' must contain at least 1 character')
     if rad <= 0:
         raise ValueError('\'rad\' must be greater than 0, not '+str(rad))
+    if not align in {'left', 'center', 'right'}:
+        raise ValueError('\'align\' must be one of \'left\', \'center\', or \'right\', not '+str(align))
     t = Turtle(visible=False)
     t.color(color)
     t.penup()
-    t.setpos(x, y - rad)
-    t.write(text, align='center', font=('Arial', int(rad), 'normal'))
+    if align == 'left':
+        t.setpos(x - rad, y - rad)
+    elif align == 'right':
+        t.setpos(x + rad, y - rad)
+    else:
+        t.setpos(x, y - rad)
+    t.write(text, align=align, font=('Arial', int(rad * 1.5), 'normal'))
     return t
 
 if __name__ == '__main__':

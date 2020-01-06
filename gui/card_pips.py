@@ -1,7 +1,7 @@
 from turtle import Turtle
 from solitaire.game.suit import Suit
 from solitaire.game.color import Color
-from solitaire.gui.symbols import draw_spade, draw_club, draw_heart, draw_diamond, draw_text
+from solitaire.gui.symbols import draw_spade, draw_club, draw_heart, draw_diamond, draw_text, draw_square
 from solitaire.gui.card_back import draw_card_up_back
 
 def draw_ace_card_pip(suit: Suit, rad: float, x: float = 0, y: float = 0) -> [Turtle]:
@@ -430,8 +430,8 @@ def draw_jack_card_pip(suit: Suit, rad: float, x: float = 0, y: float = 0) -> [T
         raise ValueError('\'rad\' must be greater than 0, not '+str(rad))
     symbol_size = 0.2
     symbol_pos = [0, 0.4]
-    text_size = 0.65
-    text_pos = [0, -0.2]
+    text_size = 0.5
+    text_pos = [0, -0.4]
     t = []
     if suit == Suit('spade'):
         t.append(draw_spade(rad * symbol_size, x + rad * symbol_pos[0], y + rad * symbol_pos[1]))
@@ -473,8 +473,8 @@ def draw_queen_card_pip(suit: Suit, rad: float, x: float = 0, y: float = 0) -> [
         raise ValueError('\'rad\' must be greater than 0, not '+str(rad))
     symbol_size = 0.2
     symbol_pos = [0, 0.4]
-    text_size = 0.65
-    text_pos = [0, -0.2]
+    text_size = 0.5
+    text_pos = [0, -0.4]
     t = []
     if suit == Suit('spade'):
         t.append(draw_spade(rad * symbol_size, x + rad * symbol_pos[0], y + rad * symbol_pos[1]))
@@ -516,8 +516,8 @@ def draw_king_card_pip(suit: Suit, rad: float, x: float = 0, y: float = 0) -> [T
         raise ValueError('\'rad\' must be greater than 0, not '+str(rad))
     symbol_size = 0.2
     symbol_pos = [0, 0.4]
-    text_size = 0.65
-    text_pos = [0, -0.2]
+    text_size = 0.5
+    text_pos = [0, -0.4]
     t = []
     if suit == Suit('spade'):
         t.append(draw_spade(rad * symbol_size, x + rad * symbol_pos[0], y + rad * symbol_pos[1]))
@@ -576,5 +576,3 @@ if __name__ == '__main__':
     
     draw_card_up_back(100, 300, -200)
     draw_king_card_pip('spade', 100, 300, -200)
-    
-        
