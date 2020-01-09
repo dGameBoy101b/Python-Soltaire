@@ -1,6 +1,6 @@
 from turtle import Turtle
 
-def draw_diamond(rad: float, x: float = 0, y: float = 0) -> Turtle:
+def draw_diamond(rad: float, x: float = 0, y: float = 0, color = 'red') -> Turtle:
     '''draw a playing card diamond'''
     if isinstance(x, int):
         x = float(x)
@@ -18,7 +18,7 @@ def draw_diamond(rad: float, x: float = 0, y: float = 0) -> Turtle:
         raise ValueError('\'rad\' must be greater than 0, not '+str(rad))
     rat = 0.7
     t = Turtle(visible=False)
-    t.color('red')
+    t.color(color)
     t.penup()
     t.setpos(rad * rat + x, y)
     t.begin_fill()
@@ -28,7 +28,7 @@ def draw_diamond(rad: float, x: float = 0, y: float = 0) -> Turtle:
     t.end_fill()
     return t
 
-def draw_heart(rad: float, x: float = 0, y: float = 0) -> Turtle:
+def draw_heart(rad: float, x: float = 0, y: float = 0, color = 'red') -> Turtle:
     '''draw a playing card heart'''
     if isinstance(x, int):
         x = float(x)
@@ -45,7 +45,7 @@ def draw_heart(rad: float, x: float = 0, y: float = 0) -> Turtle:
     if rad <= 0:
         raise ValueError('\'rad\' must be greater than 0, not '+str(rad))
     t = Turtle(visible=False)
-    t.color('red')
+    t.color(color)
     t.penup()
     t.setpos(x, y + 0.5 * rad)
     t.setheading(90)
@@ -59,7 +59,7 @@ def draw_heart(rad: float, x: float = 0, y: float = 0) -> Turtle:
     t.end_fill()
     return t
 
-def draw_club(rad: float, x: float = 0, y: float = 0) -> Turtle:
+def draw_club(rad: float, x: float = 0, y: float = 0, color = 'black') -> Turtle:
     '''draw a playing card club'''
     if isinstance(x, int):
         x = float(x)
@@ -76,7 +76,7 @@ def draw_club(rad: float, x: float = 0, y: float = 0) -> Turtle:
     if rad <= 0:
         raise ValueError('\'rad\' must be greater than 0, not '+str(rad))
     t = Turtle(visible=False)
-    t.color('black')
+    t.color(color)
     t.penup()
     t.setpos(x, y + rad)
     t.begin_fill()
@@ -124,7 +124,7 @@ def draw_square(rad: float, x: float = 0, y: float = 0) -> Turtle:
     t.setpos(x + rad, y + rad)
     return t
 
-def draw_spade(rad: float, x: float = 0, y: float = 0) -> Turtle:
+def draw_spade(rad: float, x: float = 0, y: float = 0, color = 'black') -> Turtle:
     '''draw a playing card spade'''
     if isinstance(x, int):
         x = float(x)
@@ -141,6 +141,7 @@ def draw_spade(rad: float, x: float = 0, y: float = 0) -> Turtle:
     if rad <= 0:
         raise ValueError('\'rad\' must be greater than 0, not '+str(rad))
     t = Turtle(visible=False)
+    t.color(color)
     t.penup()
     t.setpos(x, y - rad)
     t.begin_fill()
@@ -162,7 +163,7 @@ def draw_spade(rad: float, x: float = 0, y: float = 0) -> Turtle:
     t.end_fill()
     return t
 
-def draw_text(text: str, color: str, rad: float, x: float = 0, y: float = 0, align: str = 'center') -> Turtle:
+def draw_text(text: str, color, rad: float, x: float = 0, y: float = 0, align: str = 'center') -> Turtle:
     if not isinstance(text, str):
         raise TypeError('\'text\' must be a string, not a '+str(type(text)))
     if isinstance(rad, int):

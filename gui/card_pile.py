@@ -2,6 +2,7 @@ from turtle import Turtle
 from solitaire.game.card_pile import CardPile
 from solitaire.game.card import Card
 from solitaire.gui.card import GCard
+from solitaire.gui.card_back import draw_blank_cell, card_rat
 
 class GCardPile(CardPile):
     '''a graphical representation of a pile of playing cards'''
@@ -9,10 +10,12 @@ class GCardPile(CardPile):
     FACEDOWN_Y_GAP = -0.2
     FACEUP_X_GAP = 0
     FACEUP_Y_GAP = -0.4
-    def __init__(self, cards: [Card], rad: int, x: float = 0, y: float = 0):
+    def __init__(self, cards: [Card], rad: float, x: float = 0, y: float = 0):
         CardPile.__init__(self, *cards)
-        if not isinstance(rad, int):
-            raise TypeError('\'rad\' must be an integer, not a '+str(type(rad)))
+        if isinstance(rad, int):
+            rad = float(rad)
+        if not isinstance(rad, float):
+            raise TypeError('\'rad\' must be a float, not a '+str(type(rad)))
         if isinstance(x, int):
             x = float(x)
         if not isinstance(x, float):
@@ -26,6 +29,8 @@ class GCardPile(CardPile):
         self.rad = rad
         self.x = x
         self.y = y
+        self.width = 0
+        self.height = 0
         return
 
     def __repr__(self) -> str:
@@ -57,20 +62,27 @@ class GCardPile(CardPile):
         if not isinstance(facedown_y_gap, float):
             raise TypeError('\'facedown_y_gap\' must be a float, not a '+str(type(facedown_y_gap)))
         t = []
-        x_gap = 0.0
-        y_gap = 0.0
-        for i in range(len(self)):
-            card = self.cards[i]
-            if card.facedown:
-                t.append(GCard(card.suit, card.rank, self.rad, card.facedown, self.x + x_gap, self.y + y_gap).display())
-                x_gap += facedown_x_gap * self.rad
-                y_gap += facedown_y_gap * self.rad
-            else:
-                t.extend(GCard(card.suit, card.rank, self.rad, card.facedown, self.x + x_gap, self.y + y_gap).display())
-                x_gap += faceup_x_gap * self.rad
-                y_gap += faceup_y_gap * self.rad
+        self.width = globals()['card_rat'] * self.rad * 2
+        self.height = self.rad * 2
+        if len(self) < 1:
+            t.append(draw_blank_cell(self.rad, self.x, self.y))
+        else:
+            x_gap = 0.0
+            y_gap = 0.0
+            for i in range(len(self)):
+                card = self.cards[i]
+                if card.facedown:
+                    t.append(GCard(card.suit, card.rank, self.rad, card.facedown, self.x + x_gap, self.y + y_gap).display())
+                else:
+                    t.extend(GCard(card.suit, card.rank, self.rad, card.facedown, self.x + x_gap, self.y + y_gap).display())
+                if i < len(self) - 1:
+                    x_gap += faceup_x_gap * self.rad
+                    y_gap += faceup_y_gap * self.rad
+            self.width += x_gap
+            self.height += y_gap
         return t
 
 if __name__ == '__main__':
-    GCardPile((Card('spade','ace',False), Card('heart','two',False), Card('club','queen',False), Card('diamond','king',False)), 50, -50).display()
-    GCardPile((Card('spade','four',True), Card('heart','seven',True), Card('diamond','ten',False), Card('club','five',True)), 50, 50).display()
+    GCardPile((), 50, 0).display()
+    GCardPile((Card('spade','ace',False), Card('heart','two',False), Card('club','queen',False), Card('diamond','king',False)), 50, -100).display()
+    GCardPile((Card('spade','four',True), Card('heart','seven',True), Card('diamond','ten',False), Card('club','five',True)), 50, 100).display()
