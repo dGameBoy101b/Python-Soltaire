@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 
 card_rat = 0.7
 
@@ -118,6 +118,7 @@ def draw_blank_cell(rad: float, x: float = 0, y: float = 0) -> Turtle:
     return t
 
 if __name__ == '__main__':
+    delay(0)
     draw_card_up_back(100, -300)
     draw_blank_cell(100, 0)
     draw_card_down_back(100, 300)

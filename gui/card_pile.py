@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 from solitaire.game.card_pile import CardPile
 from solitaire.game.card import Card
 from solitaire.gui.card import GCard
@@ -83,6 +83,7 @@ class GCardPile(CardPile):
         return t
 
 if __name__ == '__main__':
+    delay(0)
     GCardPile((), 50, 0).display()
     GCardPile((Card('spade','ace',False), Card('heart','two',False), Card('club','queen',False), Card('diamond','king',False)), 50, -100).display()
     GCardPile((Card('spade','four',True), Card('heart','seven',True), Card('diamond','ten',False), Card('club','five',True)), 50, 100).display()

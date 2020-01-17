@@ -1,9 +1,9 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 from solitaire.game.deck import Deck
 from solitaire.game.card import Card
 from solitaire.gui.card_pile import GCardPile
 from solitaire.gui.symbols import draw_text
-from solitaire.gui.card_back import draw_blank_cell, draw_card_down_back
+from solitaire.gui.card_back import draw_blank_cell, draw_card_down_back, card_rat
 
 class GDeck(Deck):
     '''a graphical representation of a playing card deck'''
@@ -47,6 +47,7 @@ class GDeck(Deck):
         return t
 
 if __name__ == '__main__':
+    delay(0)
     GDeck(50, None, -150).display()
     GDeck(50, (), 0).display()
     GDeck(50, (Card('heart','seven'),Card('club','king'),Card('diamond','nine'),Card('heart','two'),Card('spade','jack')), 150).display()

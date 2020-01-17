@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 from solitaire.game.suit import Suit
 from solitaire.game.rank import Rank
 from solitaire.game.card import Card
@@ -91,5 +91,6 @@ if __name__ == '__main__':
     assert GCard('spade', 'ace', 50, False).y == 0
     assert GCard('spade', 'ace', 50, False) == GCard('spade', 'ace', 50, False)
     assert repr(GCard('spade', 'ace', 50, False)) == 'GCard(Suit(\'spade\'),Rank(\'ace\'),50.0,False,0.0,0.0)'
+    delay(0)
     GCard('spade', 'ace', 50, False, -50).display()
     GCard('heart', 'king', 50, True, 50).display()

@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 from solitaire.game.end_pile import EndPile
 from solitaire.game.card import Card
 from solitaire.game.suit import Suit
@@ -59,6 +59,7 @@ class GEndPile(EndPile, GCardPile):
         return t
 
 if __name__ == '__main__':
+    delay(0)
     assert GEndPile('diamond', 100).rad == 100
     assert GEndPile('diamond', 100).x == 0
     assert GEndPile('diamond', 100).y == 0

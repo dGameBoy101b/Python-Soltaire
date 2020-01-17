@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 
 def draw_diamond(rad: float, x: float = 0, y: float = 0, color = 'red') -> Turtle:
     '''draw a playing card diamond'''
@@ -199,6 +199,8 @@ def draw_text(text: str, color, rad: float, x: float = 0, y: float = 0, align: s
     return t
 
 if __name__ == '__main__':
+    delay(0)
+    
     draw_square(100, -100, 100)
     draw_spade(100, -100, 100)
     

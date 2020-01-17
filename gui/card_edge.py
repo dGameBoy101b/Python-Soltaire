@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 from solitaire.game.color import Color
 from solitaire.game.suit import Suit
 from solitaire.game.rank import Rank
@@ -55,6 +55,7 @@ def draw_card_left_edge(suit: Suit, rank: Rank, rad: float, x: float = 0, y: flo
     return t
 
 if __name__ == '__main__':
+    delay(0)
     draw_card_up_back(100, 0, 0)
     draw_card_left_edge('spade', 'ace', 100, 0, 0)
     draw_ace_card_pip('spade', 100, 0, 0)

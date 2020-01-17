@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 from solitaire.game.discard_pile import DiscardPile
 from solitaire.game.card import Card
 from solitaire.gui.card_back import draw_blank_cell
@@ -47,5 +47,6 @@ class GDiscardPile(DiscardPile, GCardPile):
         return t
 
 if __name__ == '__main__':
+    delay(0)
     GDiscardPile(50, [], -50).display()
     GDiscardPile(50, [Card('spade','ace',False),Card('heart','ace',False),Card('spade','ten',False),Card('diamond','seven',False),Card('heart','queen',False),Card('club','two',False)], 50).display()

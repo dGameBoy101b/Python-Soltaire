@@ -1,4 +1,4 @@
-from turtle import Turtle
+from turtle import Turtle, delay
 from solitaire.game.suit import Suit
 from solitaire.game.color import Color
 from solitaire.gui.symbols import draw_spade, draw_club, draw_heart, draw_diamond, draw_text, draw_square
@@ -537,7 +537,9 @@ def draw_king_card_pip(suit: Suit, rad: float, x: float = 0, y: float = 0) -> [T
         raise Exception('draw function for suit \''+str(suit)+'\' cannot be found')
     return t
 
-if __name__ == '__main__':    
+if __name__ == '__main__':
+    delay(0)
+    
     draw_card_up_back(100, -300, 200)
     draw_ace_card_pip('spade', 100, -300, 200)
     
